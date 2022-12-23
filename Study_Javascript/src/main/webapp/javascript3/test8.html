@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	document.write("document 객체 : " + document + "<br>")
+	// => [object HTMLDocument]
+
+	document.write("document.documentElement : " + document.documentElement +"<br>")
+	// => [object HTMLHtmlElement] -> <html> 태그를 관리하는 객체 
+	
+	document.write("document.head : " + document.head +"<br>")
+	// => [object HTMLHeadElement]
+	
+	document.write("document.body : " + document.body +"<br>")
+	// => [object HTMLBodyElement]
+	
+	
+	
+</script>
+</head>
+<body>
+
+	<h1>test8.html</h1>
+	<div>목록 시작</div>
+	<ul>
+		<li>항목1</li>
+		<li>항목2</li>
+	
+	</ul>
+	<div>목록 끝</div>
+	<script type="text/javascript">
+		//
+		//
+		//
+		for(let i = 0; i < document.body.childNodes.length; i++){
+			alert(document.body.childNodes[i] + " : " + document.body.childNodes[i].nodeName +"<br>");
+		}
+	
+	</script>
+	
+	<!-- 
+	
+	 -->
+	
+	<h1> body 태그 자식 노드 접근 후 </h1>
+	
+	
+</body>
+</html>

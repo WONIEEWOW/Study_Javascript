@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+/*
+ * [문서 내의 각 요소에 접근하는 방법 - 이미지(img태그)]
+ * 1. document.getElementXXX() 똔ㄴ
+ 
+ 
+ 
+ */
+
+ 		function func1() {
+		//div 영역(id선택자 "infoArea")에 텍스트 출력
+//  	document.querySelector("#infoArea").innerHTML = "확인";
+	
+//  		document.querySelector("#infoArea").innerHTML = 
+//  			"src = " + document.img1.src + "<br>" + 
+//  			"width = " + document.img1.width + "<br>" +
+//  			"height = " + document.img1.height + "<br>";
+		
+ 	
+ 	//배열 형식을 사용하여
+ 	
+ 		document.querySelector("#infoArea").innerHTML = 
+ 			"src = " + document.images[0].src + "<br>" + 
+ 			"width = " + document.images[0].width + "<br>" +
+ 			"height = " + document.images[0].height + "<br>";
+	
+		}	
+ 			
+		function func2() {
+ 		//이미지 정보 변경(파일명 : 2.jpg, 가로크기:300, 세로크기:250)				
+		
+			document.images[0].src = "2.jpg";
+			document.images[0].width = "300"; 		
+			document.images[0].height = "250";		
+ 		
+		}
+ 
+ 
+
+
+
+</script>
+
+</head>
+<body>
+	<h1>test12.html</h1>
+	<img src="1.jpg" name="img1" width="150" height="150" title="펭수1" alt="펭수없음"><br>
+	<button onclick="func1()">이미지 속성정보 출력</button>	
+	<button onclick="func2()">이미지 속성정보 변경</button>	
+	<div id="infoArea"></div>
+</body>
+</html>

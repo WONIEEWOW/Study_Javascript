@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+
+	function func1(){
+		alert(location.href);
+	
+	document.body.style.background = "GRAY";
+	
+	}
+
+	function func2(){
+		location.href = "test4.html";
+// 		location.href = "www.naver.com";
+		
+	}
+
+	function func3(){
+		location.reload();
+	}
+	
+	function func4(target){
+		
+		//1. if문 사용 
+		
+// 			if(target == "cart"){
+// 				location.href = "test5_cart.html";
+// 			} else if (target == "order") {
+// 				location.href = "test5_order.html";
+// 			}
+		
+		
+		//2. 문자열 결합
+			location.href = "test5_" + target + ".html";
+		
+	}
+	
+	
+	
+</script>
+</head>
+<body>
+	<h1>test5.html</h1>
+	<input type="button" value="URL 정보 확인" onclick="func1()"><br>	
+	<input type="button" value="URL 정보 변경" onclick="func2()"><br>	
+	<!--  -->
+	<input type="button" value="URL 정보 변경2" onclick="location.href='test4.html'"><br>	
+	
+	<input type="button" value="URL 정보 새로고침" onclick="func3()"><br>	
+	<!-- test5_cart.html , test5_order.html-->
+	<input type="button" value="장바구니 담기" onclick="func4('cart')"><br>	
+	<input type="button" value="즉시구매" onclick="func4('order')"><br>	
+	
+	
+	
+</body>
+</html>

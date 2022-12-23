@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+
+	function showMessage() {
+		alert("자식창 메세지 출력");
+	}
+
+	function showMessage2() {
+		window.opener.alert("자식창에서 요청한 메세지를 부모창에서 출력");
+	//단 부모창이 자식창에 가려진 상태에서 alert 
+		window.close();
+	}
+	
+	function closeWindow() {
+		window.close(); // 현재 창 닫기
+	}
+	
+
+
+</script>
+</head>
+
+<body>
+
+
+	<h1>test4_new_window.html</h1>
+	<input type="button" value="현재(자식)창 메세지 출력" onclick="showMessage()"><br>	
+	<input type="button" value="부모창 메세지 출력" onclick="showMessage2()"><br>	
+	<input type="button" value="창 닫기" onclick="closeWindow"><br>	
+
+
+</body>
+</html>

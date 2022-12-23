@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	/*
+	[ 선택자(Selector) ]
+	
+	
+	[document 객체를 사용하여 특정 선택자를 갖는 요소를 선택하는 방법]
+	
+	*/
+	
+	//HTML 태그 요소 중 id 선택자가 "Header1"인 태그 객체 가져오기
+	function func1(){
+		let idHeader1 = document.getElementById("header1");
+// 		alert(idHeader1);
+		idHeader1.style.background = "YELLOW";
+		
+		document.getElementById("header2").style.background = "SKYBLUE";
+		
+		let header5 = document.getElementsByClassName("header5");
+		
+		//리턴받은 객체는 대상 객체가 복수개가 저장된 HTMLCollection 객체이므로 반복문 필요
+//  	header5.style.background = "PINK";
+ 	
+ 	//for of 문 사용 
+		for(let h5 of header5) {
+			h5.style.background = "PINK";
+ 		}
+		
+		let tagsH4 = document.getElementsByTagName("h4");
+		for(let h4 of tagsH4) {
+			h4.style.background = "LIGHTGRAY";
+ 		}
+		
+ 	
+	} // func1() 함수 끝
+ 
+ 	document.
+ 
+ 	docu
+ 	
+ 	
+ 	
+ 	
+
+</script>
+
+</head>
+<body>
+
+	<h1>test9.html  p.606</h1>
+	<input type="button" value="확인" onclick="func1()">
+	<hr>
+	
+	<h3 id = "header1" >Header - 1 </h3>
+	<h3 id = "header2" >Header - 2 </h3>
+	<h4 id = "header3" >Header - 3 </h4>
+	<h4 id = "header4" >Header - 4 </h4>
+	<hr>
+	<h3 class = "header5" >Header - 5_1 </h3>
+	<h3 class = "header5" >Header - 5_2 </h3>
+	
+	
+</body>
+</html>

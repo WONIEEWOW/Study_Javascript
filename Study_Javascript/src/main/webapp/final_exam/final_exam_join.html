@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<script type="text/javascript">
+
+
+	function checkDuplicateId(){
+		let id = document.fr.id.value;
+			
+		if(id.length < 4 && id.length >8){
+			window.open("check_id.html", "checkID", "width=300", "height = 200")
+		} else {
+			alert("아이디는 4~8글자만 사용가능!")
+			document.getElementById("checkIdResult").innerHTML=" ", //옵션
+		
+		}
+
+	}
+	
+	
+	function checkPassword(passwd){
+		//span태그 영역()		
+		
+		if(passwd.length >=8 && passwd.length <=16){
+			spanelem.innerHTML = "사용 가능한 패스워드";
+			elem.style.color = "GREEN"
+		} else {
+			elem.innerHTML = "사용 불가능한 패스워드";
+			elem.style.color = "RED"
+		} 
+	
+	}	
+
+	function checkJumin1(jumin1) {
+		if(jumin1.length == 6){
+			document.fr.jumin2.focus();
+		}
+	}
+			
+	function checkJumin2(jumin2) {
+		if(jumin1.length == 6){
+			document.fr.jumin2.blur();
+		}	
+	}
+	
+	function  changeDomain(domain) {
+		document.fr.email2.value = domain;
+	
+		if(domain != ""){
+			document.fr.email2.readOnly = true;
+		} else {
+// 			document.fr.email2.disabled = false; 
+			document.fr.email2.readOnly = false; 
+			document.fr.email2.focus; 
+		}
+	
+	
+	
+	}
+	
+	
+	
+	function checkAll(checked) {
+		for(hobby of document.fr.hobby){
+			hobby.checked = checked;
+		}
+	}
+	
+
+
+</script>
+
+
+</head>
+<body>
+	<h1>회원가입</h1>
+	<form name="fr">
+		<table border="1">
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name = "name"></td>
+			</tr>
+			<tr>
+				<td>ID</td>
+				<td><input type="text" name="ID"  placeholder="4 ~ 8글자 사이 입력" onchange="checkIdResult()">
+				<input type="submit" value="ID중복확인" onclick="checkDuplicateId()">
+				<span id = "checkIdResult"></span></td>
+			</tr>	
+			<tr> 
+				<td>비밀번호</td>
+				<td><input type="password"  name="passwd"  placeholder="8 ~ 16글자 사이 입력" onkeyup="">
+				<span id = "checkPasswordResult"></span></td>
+			<tr>
+				<td>비밀번호확인</td>
+				<td><input type="password" name="passwdconfirm">
+				<span id = "checkConfirmPasswordResult"></span></td>
+			</tr>	
+			<tr>
+				<td>주민번호</td>
+				<td><input type="number" name="jumin1" onkeyup="checkJumin1(this.value)" required="required"> - 
+				<input type="number" name="jumin2" onkeyup="checkJumin2(this.value)" required="required">
+				</td>
+			</tr>		
+			<tr>
+				<td>E-mail</td>
+				<td><input type="text" name="email_1"> @ <input type="text" name="email_2"> 
+				<select name="domain" onchange = "changeDomain()">
+				<option value = "">직접입력</option>
+				<option value = "naver.com">naver.com</option>
+				<option value="nate.com">nate.com</option>
+				<option value="gmail.com">gmail.com</option>
+				</select></td>
+			</tr>	
+			<tr>
+				<td>직업</td>
+				<td><select name="job">
+				<option>항목을 선택하세요</option>
+				<option>개발자</option>
+				<option>DB엔지니어</option>
+				<option>관리자</option>
+				<option>기타</option>
+				</select></td>
+			</tr>	
+			<tr>
+				<td>성별</td>
+				<td><input type="radio" name="gender" value="남">남
+				<input type="radio" name="gender" value="여">여</td>
+			</tr>
+			<tr>
+				<td>취미</td>
+				<td> <input type="checkbox" name = "hobby" value="여행" checked="checked">여행
+				<input type="checkbox" name = "hobby" value="독서" checked="checked">독서
+				<input type="checkbox" name = "hobby" value="게임" checked="checked">게임
+				<input type="checkbox" name="hobbyAll" value="전체선택" checked="checked" onclick="checkAll(this.value)">전체선택
+			</tr>
+			<tr>
+				<td>가입동기</td>
+				<td><textarea rows="7" cols="30"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<input type="submit" value="가입" >
+				<input type="reset" value="초기화" >
+				<input type="button" value="돌아가기" onclick="history.back()">
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div id="infoArea"></div> 
+</body>
+</html>
