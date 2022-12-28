@@ -21,15 +21,38 @@
 	$(function() {
 		$("#btnLogin").on("click", function() {
 			// AJAX 를 사용하여 test1_result.jsp 페이지로 요청 전송하기
+// 			$.ajax({
+// 				type: "post", // AJAX 로 요청 시 HTTP 요청 방식(GET or POST) 지정
+// 				url: "test1_result.jsp", // AJAX 로 요청할 요청 주소(URL)
+// 				data: { // 전송할 데이터(파라미터) 지정(일반 파라미터일 경우 중괄호로 묶음)
+// 					// 폼 데이터를 가져와서 파라미터로 표현(전송)하는 경우
+// 					// 파라미터명: 데이터 형식으로 지정
+// // 					id: $("#id").val(), // id 선택자의 value 속성값을 id 파라미터로 저장
+// // 					passwd: $("#passwd").val() // passwd 선택자의 value 속성값을 passwd 파라미터로 저장
+// 					// -------- 값을 직접 지정 시 ---------
+// 					id: "admin",
+// 					passwd: "1234"
+// 				},
+// 				dataType: "text", // 응답 데이터에 대한 타입 지정(일반 데이터는 text 이며 HTML 코드도 포함 가능, 자바스크립트 포함되면 html 사용)
+// 				success: function(response) { // 요청에 대한 처리 성공 시(= 정답 응답) 처리할 함수 정의
+// 					// 익명 함수 파라미터로 응답 데이터가 전달됨(처리 페이지의 응답 결과)
+// 					// id 선택자 resultArea 영역에 응답 데이터(response) 출력하기
+// 					$("#resultArea").html(response);
+// 				}, 
+// 				error: function(xhr, textStatus, errorThrown) { 
+// 					// 요청에 대한 처리 실패 시(= 에러 발생 시) 실행되는 이벤트
+// 					$("#resultArea").html("xhr = " + xhr + "<br>textStatus = " + textStatus + "<br>errorThrown = " + errorThrown);
+// 				}
+// 			});
+			
+			// 폼 태그 내부 파라미터를 모두 요청 페이지로 전송하기 위해서
+			// 폼을 대상으로 serialize() 함수 호출하면 해당 폼의 데이터 직렬화(= 내보내기)
+			let sendData = $("form").serialize(); // 아이디, 패스워드 파라미터 저장됨
 			$.ajax({
 				type: "post", // AJAX 로 요청 시 HTTP 요청 방식(GET or POST) 지정
-				url: "test1_result.jsp", // AJAX 로 요청할 요청 주소(URL)
-				data: { // 전송할 데이터(파라미터) 지정(일반 파라미터일 경우 중괄호로 묶음)
-					// 폼 데이터를 가져와서 파라미터로 표현(전송)하는 경우
-					// 파라미터명: 데이터 형식으로 지정
-					id: $("#id").val(), // id 선택자의 value 속성값을 id 파라미터로 저장
-					passwd: $("#passwd").val() // passwd 선택자의 value 속성값을 passwd 파라미터로 저장
-				},
+				url: "http://localhost:8080/MVC_Board/MemberLoginPro.me", // AJAX 로 요청할 요청 주소(URL)
+				// serialize() 함수를 통해 가져온 폼 데이터를 전송할 데이터로 지정(중괄호 불필요)
+				data: sendData,
 				dataType: "text", // 응답 데이터에 대한 타입 지정(일반 데이터는 text 이며 HTML 코드도 포함 가능, 자바스크립트 포함되면 html 사용)
 				success: function(response) { // 요청에 대한 처리 성공 시(= 정답 응답) 처리할 함수 정의
 					// 익명 함수 파라미터로 응답 데이터가 전달됨(처리 페이지의 응답 결과)
@@ -41,6 +64,8 @@
 					$("#resultArea").html("xhr = " + xhr + "<br>textStatus = " + textStatus + "<br>errorThrown = " + errorThrown);
 				}
 			});
+			
+			
 		});
 	});
 </script>
