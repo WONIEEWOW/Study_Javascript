@@ -62,7 +62,34 @@
 				// => 배열명[인덱스].속성명 형태로 배열 내의 객체에 접근(ex. data[0].name)
 // 				$("#resultArea").after(data[0].id); // 첫번째 배열의 id 속성값 출력
 
-				
+				// 파싱된 JSON 객체의 배열 크기만큼 for문을 통해 반복 작업 수행
+// 				for(let i = 0; i < data.length; i++) {
+// 					let id = data[i].id;
+// 					let name = data[i].name;
+// 					let age = data[i].age;
+// 					let agreeRcvSpam = data[i].agreeRcvSpam;
+					
+// 					$("#resultArea > table").append(
+// 							"<tr><td>" + id + "</td>"
+// 							+ "<td>" + name + "</td>"
+// 							+ "<td>" + age + "</td>"
+// 							+ "<td>" + agreeRcvSpam + "</td></tr>"
+// 					);
+// 				}
+
+				for(let obj of data) {
+					let id = obj.id;
+					let name = obj.name;
+					let age = obj.age;
+					let agreeRcvSpam = obj.agreeRcvSpam;
+					
+					$("#resultArea > table").append(
+							"<tr><td>" + id + "</td>"
+							+ "<td>" + name + "</td>"
+							+ "<td>" + age + "</td>"
+							+ "<td>" + agreeRcvSpam + "</td></tr>"
+					);
+				}
 				
 			})
 			.fail(function() {

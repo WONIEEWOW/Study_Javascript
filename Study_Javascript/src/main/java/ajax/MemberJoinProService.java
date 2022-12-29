@@ -5,32 +5,30 @@ import java.sql.Connection;
 public class MemberJoinProService {
 
 	public boolean joinMember(MemberBean member) {
-//		System.out.println(isJoinSuccess);
-		
-		//1.boolean타입 변수 선언
 		boolean isJoinSuccess = false;
 		
-		//2. 공통객체 가져오기
+		// 공통작업-1. Connection 객체 가져오기
 		Connection con = JdbcUtil.getConnection();
 		
-		//3. 공통 DAO 객체 가져오기
+		// 공통작업-2. MemberDAO 객체 가져오기
 		MemberDAO dao = MemberDAO.getInstance();
 		
+		// 공통작업-3. MemberDAO 객체에 Connection 객체 전달하기
 		dao.setConnection(con);
 		
-		//4.MemberDAO 객체의 insertMember() 호출 
+		// MemberDAO 객체의 insertMember() 메서드를 호출하여 답글 쓰기 작업 요청
+		// => 파라미터 : MemberBean 객체   리턴타입 : int(insertCount)
 		int insertCount = dao.insertMember(member);
-		
-		//5. 작업 처리결과에 따른 트랜젝션 처리
-		
-		if(insertCount > 0) { //성공시
+
+		// 작업 처리 결과에 따른 트랜잭션 처리
+		if(insertCount > 0) { // 성공 시
 			JdbcUtil.commit(con);
 			isJoinSuccess = true;
-			
-		} else {
+		} else { // 실패 시
 			JdbcUtil.rollback(con);
 		}
-		
+
+		// 공통작업-4. Connection 객체 반환하기
 		JdbcUtil.close(con);
 		
 		return isJoinSuccess;
